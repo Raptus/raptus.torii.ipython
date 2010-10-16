@@ -95,13 +95,16 @@ class IPython(AbstractInterpreter):
     def getPrompt2(self):
         return str(self.interpreter.outputcache.prompt2)
 
+    def getPromptOut(self):
+        return str(self.interpreter.outputcache.prompt_out)
+
     def resetStream(self):
         self.interpreter.outStringIO = StringIO.StringIO()
         self.interpreter.InteractiveTB.errStringIO = StringIO.StringIO()
         self.interpreter.SyntaxTB.errStringIO = StringIO.StringIO()
 
     def push(self, line):
-        self.interpreter.push(line)
+        return self.interpreter.push(line)
     
     def runcode(self, code):
         self.interpreter.runcode(code)
